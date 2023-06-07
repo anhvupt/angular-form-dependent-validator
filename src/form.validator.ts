@@ -6,7 +6,7 @@ import {
   UntypedFormGroup,
   ValidatorFn,
 } from '@angular/forms';
-import { Subject, Observable, map, filter } from 'rxjs';
+import { Subject, Observable, filter } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 /**
