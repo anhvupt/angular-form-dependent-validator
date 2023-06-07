@@ -124,9 +124,3 @@ ng serve
 12. Open your browser and navigate to `http://localhost:4200` to see the form with validation in action.
 
 That's it! You have now implemented form validation using the `FormValidator` service in your Angular application. Feel free to customize the validation sets and validators based on your specific requirements.
-
-### License
-
-This example
-
- is provided under the [MIT License](LICENSE).
