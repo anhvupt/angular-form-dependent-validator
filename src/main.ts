@@ -20,8 +20,9 @@ import { requireIf } from './form-validator/util';
     Should validate
     <input type="checkbox" formControlName="shouldRequire" />
   </label>
+  <br/>
   <small style="color:red;" *ngIf="isErrorShown('email')">
-    Confirm Email is required.
+    Email is required.
 </small>
 </form>
   `,
