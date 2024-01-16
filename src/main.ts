@@ -2,14 +2,7 @@ import 'zone.js/dist/zone';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createValidationContext } from './form-validator/form-validator';
 import { requireIf } from './form-validator/util';
 
