@@ -19,7 +19,7 @@ class FormValidationContext {
   validate<T extends typeof this.form.value>(
     ...validationSets: ValidationSet<T>[]
   ) {
-    const dictinctOn = validationSets.reduce(
+    const distinctOn = validationSets.reduce(
       (acc, v) => [...acc, ...v.triggeredControls],
       [] as (keyof T)[]
     );
@@ -27,7 +27,7 @@ class FormValidationContext {
       .pipe(
         debounceTime(this.debounceTime),
         filter((x) => !!x),
-        distinctUntilKeysChanged<T>(...dictinctOn),
+        distinctUntilKeysChanged<T>(...distinctOn),
         takeUntilDestroyed()
       )
       .subscribe((formValue) => {

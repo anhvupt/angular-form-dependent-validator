@@ -49,10 +49,7 @@ export class App {
     validation.validate({
       triggeredControls: ['email', 'shouldValidate'],
       validate: (value) => ({
-        email: [
-          Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/),
-          requireIf(() => value.shouldValidate),
-        ],
+        email: [requireIf(() => value.shouldValidate)],
       }),
     });
     return form;
