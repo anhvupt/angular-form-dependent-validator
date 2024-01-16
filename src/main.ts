@@ -2,7 +2,12 @@ import 'zone.js/dist/zone';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { createValidationContext } from './form-validator/form-validator';
 import { requireIf } from './form-validator/util';
 
@@ -18,11 +23,11 @@ import { requireIf } from './form-validator/util';
   </label>
   <label>
     Should validate
-    <input type="checkbox" formControlName="shouldRequire" />
+    <input type="checkbox" formControlName="shouldValidate" />
   </label>
   <br/>
   <small style="color:red;" *ngIf="isErrorShown('email')">
-    Email is required.
+    Email is invalid.
 </small>
 </form>
   `,
@@ -38,12 +43,17 @@ export class App {
   private buildForm() {
     const form = inject(FormBuilder).group({
       email: [''],
-      shouldRequire: [],
+      shouldValidate: [],
     });
     const validation = createValidationContext(form);
     validation.validate({
-      triggeredControls: ['email', 'shouldRequire'],
-      validate: (value) => ({ email: requireIf(() => value.shouldRequire) }),
+      triggeredControls: ['email', 'shouldValidate'],
+      validate: (value) => ({
+        email: [
+          Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/),
+          requireIf(() => value.shouldValidate),
+        ],
+      }),
     });
     return form;
   }
